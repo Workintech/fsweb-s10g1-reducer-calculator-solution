@@ -9,6 +9,9 @@ import {
   applyNumber,
   CHANGE_OPERATION,
   CLEAR,
+  MEMORY_CLEAR,
+  MEMORY_RECALL,
+  MEMORY_PLUS,
 } from "./actions";
 import reducer, { initialState } from "./reducers";
 
@@ -35,9 +38,24 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"M+"} />
-              <CalcButton value={"MR"} />
-              <CalcButton value={"MC"} />
+              <CalcButton
+                onClick={() => {
+                  dispatch({ type: MEMORY_PLUS });
+                }}
+                value={"M+"}
+              />
+              <CalcButton
+                onClick={() => {
+                  dispatch({ type: MEMORY_RECALL });
+                }}
+                value={"MR"}
+              />
+              <CalcButton
+                onClick={() => {
+                  dispatch({ type: MEMORY_CLEAR });
+                }}
+                value={"MC"}
+              />
             </div>
 
             <div className="row">

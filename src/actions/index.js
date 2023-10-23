@@ -5,6 +5,11 @@ export const CHANGE_OPERATION = "CHANGE_OPERATION";
 
 export const CLEAR = "CLEAR";
 
+export const MEMORY_PLUS = "MEMORY_PLUS Şu anki Total => Memory";
+export const MEMORY_RECALL =
+  "MEMORY_RECALL Şu anki Memory & Total APPLY_NUMBER";
+export const MEMORY_CLEAR = "MEMORY_CLEAR Memory = 0";
+
 // action creators
 // stajyer - paketleyici
 export const addOne = () => {

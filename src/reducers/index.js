@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION, CLEAR } from "./../actions";
+import {
+  ADD_ONE,
+  APPLY_NUMBER,
+  CHANGE_OPERATION,
+  CLEAR,
+  MEMORY_CLEAR,
+  MEMORY_RECALL,
+  MEMORY_PLUS,
+} from "./../actions";
 
 export const initialState = {
   total: 100,
@@ -47,6 +55,27 @@ const reducer = (state = initialState, action) => {
         ...state,
         total: 0,
       };
+
+    case MEMORY_CLEAR: {
+      return {
+        ...state,
+        memory: 0,
+      };
+    }
+
+    case MEMORY_RECALL: {
+      return {
+        ...state,
+        total: calculateResult(state.total, state.memory, state.operation),
+      };
+    }
+
+    case MEMORY_PLUS: {
+      return {
+        ...state,
+        memory: state.total,
+      };
+    }
 
     default:
       return state;
