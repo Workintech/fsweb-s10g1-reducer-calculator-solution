@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION } from "./../actions";
+import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION, CLEAR } from "./../actions";
 
 export const initialState = {
   total: 100,
@@ -40,6 +40,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         operation: action.payload,
+      };
+
+    case CLEAR:
+      return {
+        ...state,
+        total: 0,
       };
 
     default:
