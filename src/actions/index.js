@@ -5,10 +5,12 @@ export const CHANGE_OPERATION = "CHANGE_OPERATION";
 
 export const CLEAR = "CLEAR";
 
+// action creators
+// stajyer - paketleyici
 export const addOne = () => {
   return { type: ADD_ONE };
 };
 
 export const applyNumber = (number) => {
-  return { type: APPLY_NUMBER, payload: number };
+  return { type: APPLY_NUMBER, payload: Number(number) };
 };
