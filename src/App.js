@@ -12,6 +12,8 @@ import {
   MEMORY_CLEAR,
   MEMORY_RECALL,
   MEMORY_PLUS,
+  screenType,
+  CALCULATE,
 } from "./actions";
 import reducer, { initialState } from "./reducers";
 
@@ -27,10 +29,13 @@ function App() {
       <div className="container row mt-5">
         <div className="col-md-12 d-flex justify-content-center">
           <form name="Cal">
-            <TotalDisplay value={state.total} />
+            <TotalDisplay value={state.screen} />
             <div className="row details">
               <span id="operation">
                 <b>Operation:</b> {state.operation}
+              </span>
+              <span id="memory">
+                <b>Temp:</b> {state.temp}
               </span>
               <span id="memory">
                 <b>Memory:</b> {state.memory}
@@ -60,49 +65,62 @@ function App() {
 
             <div className="row">
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={(e) => dispatch(screenType(e.target.value))}
                 value={1}
               />
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={(e) => dispatch(screenType(e.target.value))}
                 value={2}
               />
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={(e) => dispatch(screenType(e.target.value))}
                 value={3}
               />
             </div>
 
             <div className="row">
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={(e) => dispatch(screenType(e.target.value))}
                 value={4}
               />
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={(e) => dispatch(screenType(e.target.value))}
                 value={5}
               />
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={(e) => dispatch(screenType(e.target.value))}
                 value={6}
               />
             </div>
 
             <div className="row">
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={(e) => dispatch(screenType(e.target.value))}
                 value={7}
               />
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={(e) => dispatch(screenType(e.target.value))}
                 value={8}
               />
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={(e) => dispatch(screenType(e.target.value))}
                 value={9}
               />
             </div>
-
+            <div className="row ">
+              <CalcButton
+                onClick={(e) => dispatch(screenType(e.target.value))}
+                value={0}
+              />
+              <CalcButton
+                onClick={(e) => dispatch({ type: CLEAR })}
+                value={"CE"}
+              />
+              <CalcButton
+                onClick={(e) => dispatch({ type: CALCULATE })}
+                value={"="}
+              />
+            </div>
             <div className="row">
               <CalcButton
                 onClick={(e) =>
@@ -121,13 +139,6 @@ function App() {
                   dispatch({ type: CHANGE_OPERATION, payload: e.target.value })
                 }
                 value={"-"}
-              />
-            </div>
-
-            <div className="row ce_button">
-              <CalcButton
-                onClick={(e) => dispatch({ type: CLEAR })}
-                value={"CE"}
               />
             </div>
           </form>

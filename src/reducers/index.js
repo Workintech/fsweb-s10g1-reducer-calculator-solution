@@ -7,12 +7,17 @@ import {
   MEMORY_CLEAR,
   MEMORY_RECALL,
   MEMORY_PLUS,
+  DIGIT,
+  CALCULATE,
+  applyNumber,
 } from "./../actions";
 
 export const initialState = {
   total: 100,
   operation: "-",
   memory: 100,
+  screen: "0",
+  temp: 0,
 };
 
 const calculateResult = (num1, num2, operation) => {
@@ -26,6 +31,12 @@ const calculateResult = (num1, num2, operation) => {
     default:
       return;
   }
+};
+
+const typeDigit = (screen, numKey) => {
+  // return screen.toString() + numKey.toString();
+  console.log(screen, numKey);
+  return `${screen}${numKey}`;
 };
 
 // const [value, setValue] = useState()
@@ -48,12 +59,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         operation: action.payload,
+        temp: state.screen,
+        screen: 0,
       };
 
     case CLEAR:
       return {
         ...state,
         total: 0,
+        screen: 0,
+        temp: 0,
       };
 
     case MEMORY_CLEAR: {
@@ -66,7 +81,8 @@ const reducer = (state = initialState, action) => {
     case MEMORY_RECALL: {
       return {
         ...state,
-        total: calculateResult(state.total, state.memory, state.operation),
+        screen: calculateResult(state.screen, state.memory, state.operation),
+        total: calculateResult(state.screen, state.memory, state.operation),
       };
     }
 
@@ -75,6 +91,26 @@ const reducer = (state = initialState, action) => {
         ...state,
         memory: state.total,
       };
+    }
+
+    case DIGIT: {
+      return {
+        ...state,
+        screen:
+          state.screen == 0
+            ? action.payload
+            : typeDigit(state.screen, action.payload),
+      };
+    }
+
+    case CALCULATE: {
+      const calculation = calculateResult(
+        state.screen,
+        state.temp,
+        state.operation
+      );
+
+      return { ...state, total: calculation, screen: calculation, temp: 0 };
     }
 
     default:
