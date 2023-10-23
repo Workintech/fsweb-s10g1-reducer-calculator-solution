@@ -3,6 +3,7 @@ import React, { useReducer } from "react";
 import TotalDisplay from "./components/TotalDisplay";
 import CalcButton from "./components/CalcButton";
 
+import { ADD_ONE, APPLY_NUMBER } from "./actions";
 import reducer, { initialState } from "./reducers";
 
 function App() {
@@ -34,8 +35,14 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1} />
-              <CalcButton value={2} />
+              <CalcButton
+                onClick={() => dispatch({ type: ADD_ONE })}
+                value={1}
+              />
+              <CalcButton
+                onClick={() => dispatch({ type: APPLY_NUMBER, payload: 2 })}
+                value={2}
+              />
               <CalcButton value={3} />
             </div>
 

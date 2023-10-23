@@ -3,7 +3,7 @@ import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION } from "./../actions";
 
 export const initialState = {
   total: 100,
-  operation: "*",
+  operation: "+",
   memory: 100,
 };
 
