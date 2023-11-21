@@ -6,13 +6,24 @@ import { useReducer } from "react";
 import TotalDisplay from "./components/TotalDisplay";
 import CalcButton from "./components/CalcButton";
 
-import { ADD_ONE, addOne, applyNumber } from "./actions/index";
+import {
+  ADD_ONE,
+  addOne,
+  CHANGE_OPERATION,
+  applyNumber,
+} from "./actions/index";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleClick = (e) => {
+    console.log("ivent", e);
+    console.log("handleClick", e.target.value, typeof e.target.value);
     dispatch(applyNumber(e.target.value));
+  };
+
+  const eventHandler = (number) => {
+    return dispatch(applyNumber(number));
   };
 
   return (
@@ -68,9 +79,24 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"+"} />
-              <CalcButton value={"*"} />
-              <CalcButton value={"-"} />
+              <CalcButton
+                onClick={() =>
+                  dispatch({ type: CHANGE_OPERATION, payload: "+" })
+                }
+                value={"+"}
+              />
+              <CalcButton
+                onClick={(e) =>
+                  dispatch({ type: CHANGE_OPERATION, payload: e.target.value })
+                }
+                value={"*"}
+              />
+              <CalcButton
+                onClick={() =>
+                  dispatch({ type: CHANGE_OPERATION, payload: "-" })
+                }
+                value={"-"}
+              />
             </div>
 
             <div className="row ce_button">

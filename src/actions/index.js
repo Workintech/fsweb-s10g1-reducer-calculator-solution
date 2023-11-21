@@ -10,5 +10,6 @@ export const addOne = () => {
 };
 
 export const applyNumber = (number) => {
+  number = Number(number);
   return { type: APPLY_NUMBER, payload: number };
 };
