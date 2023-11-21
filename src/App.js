@@ -15,19 +15,16 @@ import {
   MEMORY_APPLY,
   MEMORY_PLUS,
   MEMORY_CLEAR,
+  typeNumber,
 } from "./actions/index";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleClick = (e) => {
-    console.log("ivent", e);
+    // console.log("ivent", e);
     console.log("handleClick", e.target.value, typeof e.target.value);
-    dispatch(applyNumber(e.target.value));
-  };
-
-  const eventHandler = (number) => {
-    return dispatch(applyNumber(number));
+    dispatch(typeNumber(e.target.value));
   };
 
   return (
@@ -98,17 +95,30 @@ function App() {
                 }
                 value={"+"}
               />
-              <CalcButton
-                onClick={(e) =>
-                  dispatch({ type: CHANGE_OPERATION, payload: e.target.value })
-                }
-                value={"*"}
-              />
+              <CalcButton onClick={handleClick} value={0} />
               <CalcButton
                 onClick={() =>
                   dispatch({ type: CHANGE_OPERATION, payload: "-" })
                 }
                 value={"-"}
+              />
+            </div>
+            <div className="row">
+              <CalcButton
+                onClick={(e) =>
+                  dispatch({ type: CHANGE_OPERATION, payload: e.target.value })
+                }
+                value={"/"}
+              />
+              <CalcButton
+                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                value={"="}
+              />
+              <CalcButton
+                onClick={(e) =>
+                  dispatch({ type: CHANGE_OPERATION, payload: e.target.value })
+                }
+                value={"*"}
               />
             </div>
 
