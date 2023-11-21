@@ -42,48 +42,29 @@ function App() {
 
             <div className="row">
               <CalcButton
-                onClick={() => dispatch(addOne())}
                 // onClick={() => dispatch({ type: ADD_ONE })}
+                // onClick={() => dispatch(addOne())}
+                onClick={handleClick}
                 value={1}
               />
               <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
+                // onClick={(e) => dispatch(applyNumber(e.target.value))}
+                onClick={handleClick}
                 value={2}
               />
-              <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
-                value={3}
-              />
+              <CalcButton onClick={handleClick} value={3} />
             </div>
 
             <div className="row">
-              <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
-                value={4}
-              />
-              <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
-                value={5}
-              />
-              <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
-                value={6}
-              />
+              <CalcButton onClick={handleClick} value={4} />
+              <CalcButton onClick={handleClick} value={5} />
+              <CalcButton onClick={handleClick} value={6} />
             </div>
 
             <div className="row">
-              <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
-                value={7}
-              />
-              <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
-                value={8}
-              />
-              <CalcButton
-                onClick={(e) => dispatch(applyNumber(e.target.value))}
-                value={9}
-              />
+              <CalcButton onClick={handleClick} value={7} />
+              <CalcButton onClick={handleClick} value={8} />
+              <CalcButton onClick={handleClick} value={9} />
             </div>
 
             <div className="row">
