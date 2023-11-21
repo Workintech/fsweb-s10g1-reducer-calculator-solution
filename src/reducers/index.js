@@ -1,47 +1,52 @@
-import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION } from './../actions';
+import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION } from "./../actions";
 
 export const initialState = {
-  total: 100,
+  total: 101,
   operation: "*",
-  memory: 100
-}
+  memory: 100,
+};
 
 const calculateResult = (num1, num2, operation) => {
   switch (operation) {
-    case ("+"):
+    case "+":
       return num1 + num2;
-    case ("*"):
+    case "*":
       return num1 * num2;
-    case ("-"):
+    case "-":
       return num1 - num2;
     default:
       return;
   }
-}
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case (ADD_ONE):
-      return ({
+    case "GÖKHAN":
+      console.log("GÖKHAN");
+      return {
         ...state,
-        total: state.total + 1
-      });
+      };
+    case ADD_ONE:
+      return {
+        ...state,
+        total: state.total + 1,
+      };
 
-    case (APPLY_NUMBER):
-      return ({
+    case APPLY_NUMBER:
+      return {
         ...state,
-        total: calculateResult(state.total, action.payload, state.operation)
-      });
+        total: calculateResult(state.total, action.payload, state.operation),
+      };
 
-    case (CHANGE_OPERATION):
-      return ({
+    case CHANGE_OPERATION:
+      return {
         ...state,
-        operation: action.payload
-      });
+        operation: action.payload,
+      };
 
     default:
       return state;
   }
-}
+};
 
 export default reducer;
