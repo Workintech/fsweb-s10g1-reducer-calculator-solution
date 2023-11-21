@@ -11,6 +11,7 @@ import {
   addOne,
   CHANGE_OPERATION,
   applyNumber,
+  CLEAR_DISPLAY,
 } from "./actions/index";
 
 function App() {
@@ -100,7 +101,10 @@ function App() {
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"} />
+              <CalcButton
+                onClick={() => dispatch({ type: CLEAR_DISPLAY })}
+                value={"CE"}
+              />
             </div>
           </form>
         </div>

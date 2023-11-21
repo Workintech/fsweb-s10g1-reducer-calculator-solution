@@ -1,4 +1,9 @@
-import { ADD_ONE, APPLY_NUMBER, CHANGE_OPERATION } from "./../actions";
+import {
+  ADD_ONE,
+  APPLY_NUMBER,
+  CHANGE_OPERATION,
+  CLEAR_DISPLAY,
+} from "./../actions";
 
 export const initialState = {
   total: 101,
@@ -21,11 +26,12 @@ const calculateResult = (num1, num2, operation) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "GÖKHAN":
-      console.log("GÖKHAN");
-      return {
+    case CLEAR_DISPLAY:
+      const newState = {
         ...state,
+        total: 0,
       };
+      return newState;
     case ADD_ONE:
       return {
         ...state,
