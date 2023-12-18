@@ -10,6 +10,9 @@ import {
   addOne,
   applyNumber,
   clearDisplay,
+  memoryAdd,
+  memoryRecall,
+  memoryClear,
 } from "./actions";
 
 function App() {
@@ -45,9 +48,15 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"M+"} />
-              <CalcButton value={"MR"} />
-              <CalcButton value={"MC"} />
+              <CalcButton onClick={() => dispatch(memoryAdd())} value={"M+"} />
+              <CalcButton
+                onClick={() => dispatch(memoryRecall())}
+                value={"MR"}
+              />
+              <CalcButton
+                onClick={() => dispatch(memoryClear())}
+                value={"MC"}
+              />
             </div>
 
             <div className="row">
